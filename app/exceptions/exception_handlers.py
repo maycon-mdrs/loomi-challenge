@@ -20,7 +20,11 @@ def register_exception_handlers(app):
     @app.exception_handler(RequestValidationError)
     async def validation_exception_handler(request: Request, exc: RequestValidationError):
         logger.warning(f"Validation error: {exc.errors()} - Path: {request.url}")
-        return JSONResponse(status_code=422, content={"detail": exc.errors()})
+        errors = exc.errors()
+        for error in errors:
+            if "ctx" in error:
+                error.pop("ctx")
+        return JSONResponse(status_code=422, content={"detail": errors})
 
     @app.exception_handler(Exception)
     async def general_exception_handler(request: Request, exc: Exception):
