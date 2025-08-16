@@ -17,22 +17,9 @@ class UserCreationException(HTTPException):
         )
 
 
-class InvalidCredentialsException(HTTPException):
-    def __init__(self):
-        super().__init__(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail="E-mail ou senha inválidos"
-        )
-
-
-class InvalidTokenException(HTTPException):
-    def __init__(self):
-        super().__init__(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail="Token de acesso inválido"
-        )
-
-
 class UserNotFoundException(HTTPException):
     def __init__(self):
         super().__init__(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Usuário não encontrado"
+            status_code=status.HTTP_404_NOT_FOUND, 
+            detail="Usuário não encontrado"
         )
