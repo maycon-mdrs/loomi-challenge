@@ -2,14 +2,19 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from app.DTOs.paint_dtos import PaintRegister, PaintResponse, PaintUpdate
+from app.models.user_model import UserModel
 from app.services.paint_service import PaintService
-from app.utils.depends import get_db_session
+from app.utils.depends import admin_required, get_db_session
 
 paint_router = APIRouter(prefix="/paints", tags=["Paints"])
 
 
 @paint_router.post("/register", response_model=PaintResponse, status_code=status.HTTP_201_CREATED)
-def create_paint(paint: PaintRegister, db_session: Session = Depends(get_db_session)):
+def create_paint(
+    paint: PaintRegister,
+    db_session: Session = Depends(get_db_session),
+    current_user: UserModel = Depends(admin_required),
+):
     paint_service = PaintService(db_session=db_session)
     paint_model = paint_service.create_paint(paint=paint)
     return PaintResponse(
@@ -25,7 +30,12 @@ def create_paint(paint: PaintRegister, db_session: Session = Depends(get_db_sess
 
 
 @paint_router.patch("/{paint_id}", response_model=PaintResponse, status_code=status.HTTP_200_OK)
-def update_paint(paint_id: int, paint: PaintUpdate, db_session: Session = Depends(get_db_session)):
+def update_paint(
+    paint_id: int,
+    paint: PaintUpdate,
+    db_session: Session = Depends(get_db_session),
+    current_user: UserModel = Depends(admin_required),
+):
     paint_service = PaintService(db_session=db_session)
     updated_paint = paint.model_dump(exclude_unset=True)
     paint_model = paint_service.update_paint(paint_id, updated_paint)
@@ -93,6 +103,10 @@ def get_paint_by_name(name: str, db_session: Session = Depends(get_db_session)):
 
 
 @paint_router.delete("/{paint_id}", status_code=status.HTTP_200_OK)
-def delete_paint(paint_id: int, db_session: Session = Depends(get_db_session)):
+def delete_paint(
+    paint_id: int,
+    db_session: Session = Depends(get_db_session),
+    current_user: UserModel = Depends(admin_required),
+):
     paint_service = PaintService(db_session=db_session)
     return paint_service.delete_paint(paint_id=paint_id)
