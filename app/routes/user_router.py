@@ -2,7 +2,6 @@ from fastapi import APIRouter, Depends, status
 from requests import Session
 
 from app.DTOs.user_dtos import UserRegister, UserResponse
-from app.models.user_model import UserModel
 from app.services.user_service import UserService
 from app.utils.depends import get_db_session
 
