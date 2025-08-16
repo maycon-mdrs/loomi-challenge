@@ -16,7 +16,7 @@ class UserService:
         self.db_session = db_session
         self.user_repository = UserRepository(db_session)
 
-    def register_user(self, user: UserRegister):        
+    def register_user(self, user: UserRegister) -> UserModel:        
         existing_user = self._get_user_by_email(user.email)
         if existing_user:
             raise UserAlreadyExistsException()
@@ -55,5 +55,3 @@ class UserService:
     def delete_user(self, user_id: int) -> bool:
         user = self.get_user_by_id(user_id)
         return self.user_repository.delete(user.id)
-
-    
