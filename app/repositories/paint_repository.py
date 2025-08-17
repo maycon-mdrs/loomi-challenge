@@ -13,7 +13,7 @@ class PaintRepository:
         return self.db_session.query(PaintModel).filter(PaintModel.id == paint_id).first()
     
     def get_by_name(self, name: str) -> PaintModel:
-        return self.db_session.query(PaintModel).filter(PaintModel.paint_name == name).first()
+        return self.db_session.query(PaintModel).filter(PaintModel.paint_name.ilike(name.lower())).first()
     
     def create(self, paint: PaintModel) -> PaintModel:
         self.db_session.add(paint)
