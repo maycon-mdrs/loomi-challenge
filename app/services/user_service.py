@@ -1,15 +1,11 @@
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
-from decouple import config
+from app.config import crypt_context
 
 from app.DTOs.user_dtos import UserRegister
 from app.exceptions.user_exceptions import UserAlreadyExistsException, UserCreationException, UserNotFoundException
 from app.models.user_model import UserModel, UserRole
 from app.repositories.user_repository import UserRepository
-
-SECRET_KEY = config("SECRET_KEY")
-ALGORITHM = config("ALGORITHM")
-crypt_context = CryptContext(schemes=["sha256_crypt"])
 
 
 class UserService:
