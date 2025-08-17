@@ -1,17 +1,12 @@
 from datetime import datetime, timedelta
 from app.DTOs.auth_dtos import LoginResponse, Payload
 from sqlalchemy.orm import Session
-from passlib.context import CryptContext
-from decouple import config            
+from app.config import SECRET_KEY, ALGORITHM, crypt_context
 from jose import ExpiredSignatureError, jwt, JWTError
 
 from app.DTOs.auth_dtos import LoginRequest
 from app.exceptions.auth_exceptions import InvalidCredentialsException, InvalidTokenException
 from app.services.user_service import UserService
-
-SECRET_KEY = config("SECRET_KEY")
-ALGORITHM = config("ALGORITHM")
-crypt_context = CryptContext(schemes=["sha256_crypt"])
 
 
 class AuthService:

@@ -1,6 +1,6 @@
 from langchain.vectorstores import PGVector
 from langchain.embeddings import OpenAIEmbeddings
-from decouple import config
+from app.config import DATABASE_URL, OPENAI_API_KEY
 from typing import Dict
 
 
@@ -17,10 +17,10 @@ class VectorStoreSingleton:
     def _create_vector_store(cls, collection_name: str) -> PGVector:
         return PGVector(
             embedding_function=OpenAIEmbeddings(
-                api_key=config("OPENAI_API_KEY"), 
+                api_key=OPENAI_API_KEY, 
                 model="text-embedding-3-large"
             ),
-            connection_string=config('DATABASE_URL'),
+            connection_string=DATABASE_URL,
             collection_name=collection_name,
             use_jsonb=True
         )

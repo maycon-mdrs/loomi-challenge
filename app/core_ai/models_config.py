@@ -1,8 +1,5 @@
 from app.core_ai.openai_model import get_openai_model
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
+from app.config import MODEL_PAINTS, TEMPERATURE_PAINTS, MODEL_SUPERVISOR, TEMPERATURE_SUPERVISOR
 
 
 class ModelConfig:
@@ -19,12 +16,12 @@ class ModelConfig:
     def _init_models(self):
         self.models = {
             "paints_expert": get_openai_model(
-                model_name=os.getenv("MODEL_PAINTS", "gpt-4.1"),
-                temperature=float(os.getenv("TEMPERATURE_PAINTS", 0.1)),
+                model_name=MODEL_PAINTS,
+                temperature=TEMPERATURE_PAINTS,
             ),
             "supervisor": get_openai_model(
-                model_name=os.getenv("MODEL_SUPERVISOR", "gpt-4.1"),
-                temperature=float(os.getenv("TEMPERATURE_SUPERVISOR", 0)),
+                model_name=MODEL_SUPERVISOR,
+                temperature=TEMPERATURE_SUPERVISOR,
             ),
         }
 
