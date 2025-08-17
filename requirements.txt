@@ -2,6 +2,7 @@ fastapi
 httpx
 uvicorn[standard]
 sqlalchemy
+sqlalchemy_utils
 psycopg2-binary
 alembic
 python-decouple
