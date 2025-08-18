@@ -13,9 +13,9 @@ class PaintRegister(BaseModel):
 
     @field_validator('environment')
     def validate_environment(cls, value):
-        allowed = {'indoor', 'outdoor', 'both'}
+        allowed = {'INTERNO', 'EXTERNO', 'AMBOS'}
         if value not in allowed:
-            raise ValueError("Environment must be 'indoor', 'outdoor' or 'both'")
+            raise ValueError("Environment must be 'INTERNO', 'EXTERNO' or 'AMBOS'")
         return value
 
 
@@ -44,7 +44,7 @@ class PaintUpdate(BaseModel):
     @field_validator('environment')
     def validate_environment(cls, value):
         if value is not None:
-            allowed = {'indoor', 'outdoor', 'both'}
+            allowed = {'INTERNO', 'EXTERNO', 'AMBOS'}
             if value not in allowed:
-                raise ValueError("Environment must be 'indoor', 'outdoor' or 'both'")
+                raise ValueError("Environment must be 'INTERNO', 'EXTERNO' or 'AMBOS'")
         return value

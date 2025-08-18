@@ -4,12 +4,14 @@ from app.DTOs.paint_dtos import PaintRegister
 from app.models.paint_model import EnvironmentPaintEnum, PaintModel
 from app.repositories.paint_repository import PaintRepository
 from app.exceptions.paint_exceptions import PaintAlreadyExistsException, PaintCreationException, PaintNotFoundException, InvalidPaintDataException
+from app.services.paint_embedding_service import PaintEmbeddingService
 
 
 class PaintService:
     def __init__(self, db_session: Session):
         self.db_session = db_session
         self.paint_repository = PaintRepository(db_session)
+        self.embedding_service = PaintEmbeddingService()
 
     def create_paint(self, paint: PaintRegister) -> PaintModel:
         existing_paint = self._get_paint_by_name(paint.paint_name)
@@ -27,16 +29,32 @@ class PaintService:
         )
 
         try:
-            return self.paint_repository.create(paint)
-        except Exception:
+            created_paint = self.paint_repository.create(paint)
+            # 🔹 creates embedding in the vector
+            self.embedding_service.add_paint(self.db_session, created_paint)
+            return created_paint
+        except Exception as e:
+            print(e)
             raise PaintCreationException()
 
     def update_paint(self, paint_id, updated_paint) -> PaintModel:
-        paint = self.paint_repository.get_by_id(paint_id)
+        paint = self.get_paint_by_id(paint_id)
+
         try:
-            return self.paint_repository.update(paint.id, updated_paint)
+            updated = self.paint_repository.update(paint.id, updated_paint)
+            # 🔹 updates embedding
+            self.embedding_service.update_paint(self.db_session, updated)
+            return updated
         except Exception:
             raise InvalidPaintDataException()
+
+    def delete_paint(self, paint_id) -> bool:
+        paint = self.get_paint_by_id(paint_id)
+        deleted = self.paint_repository.delete(paint.id)
+        if deleted:
+            # 🔹 also removes embedding
+            self.embedding_service.delete_paint(paint.id)
+        return deleted
 
     def get_all_paints(self) -> list[PaintModel]:
         return self.paint_repository.get_all()
@@ -55,7 +73,3 @@ class PaintService:
         if not paint:
             raise PaintNotFoundException()
         return paint
-
-    def delete_paint(self, paint_id) -> bool:
-        paint = self.paint_repository.get_by_id(paint_id)
-        return self.paint_repository.delete(paint.id)
