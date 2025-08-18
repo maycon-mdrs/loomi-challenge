@@ -31,7 +31,7 @@ class ChatService:
             return []
 
     def save_chat_session(self, session_id: str, question: str, answer: str, user_id: str) -> ChatSessionModel:
-        """Salva o histórico da sessão de chat no banco de dados."""
+        """Saves the chat session history to the database."""
         try:
             chat_session = ChatSessionModel(
                 chat_id=session_id,
