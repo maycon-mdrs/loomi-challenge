@@ -4,9 +4,9 @@ from app.database.base import Base
 
 
 class EnvironmentPaintEnum(Enum):
-	INDOOR = "indoor"
-	OUTDOOR = "outdoor"
-	BOTH = "both"
+	INTERNO = "INTERNO"
+	EXTERNO = "EXTERNO"
+	AMBOS = "AMBOS"
 
 
 class PaintModel(Base):

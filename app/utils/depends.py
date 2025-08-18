@@ -24,6 +24,6 @@ def get_current_user(db_session: Session = Depends(get_db_session), token=Depend
 
 
 def admin_required(current_user: UserModel = Depends(get_current_user)) -> UserModel:
-    if current_user.role != UserRole.admin:
+    if current_user.role != UserRole.ADMIN:
         raise AdminAccessRequiredException()
     return current_user
