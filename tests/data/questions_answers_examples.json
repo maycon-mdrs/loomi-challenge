@@ -1,0 +1,22 @@
+[
+    {
+        "pergunta": "Quero pintar meu quarto, mas prefiro algo que seja fácil de limpar e sem cheiro forte. Tem alguma sugestão?",
+        "esperada": "Para ambientes internos como quartos, uma boa opção é a Suvinil Toque de Seda, que possui acabamento acetinado, é lavável e tem tecnologia sem odor."
+    },
+    {
+        "pergunta": "Preciso pintar a fachada da minha casa. Bate muito sol e chove bastante por aqui. Qual tinta você recomenda?",
+        "esperada": "Consultei nosso especialista em ambientes externos e o agente de resistência climática. Recomendamos a Suvinil Fachada Acrílica, que possui proteção contra chuva e sol, além de ser anti-mofo e lavável."
+    },
+    {
+        "pergunta": "Você tem alguma tinta para madeira que seja resistente ao calor?",
+        "esperada": "Sim! A Suvinil Esmalte Sintético é ideal para madeira e resistente ao calor, além de ter acabamento brilhante. Deseja mais opções?"
+    },
+    {
+        "pergunta": "Quero pintar meu escritório com um tom de cinza moderno. Mostra como ficaria?",
+        "esperada": "Sugiro o tom Cinza Urbano da linha Suvinil Fosco Completo. O que acha?"
+    },
+    {
+        "pergunta": "Quero pintar minha varanda de azul claro, algo moderno e resistente ao tempo. Como ficaria?",
+        "esperada": "Recomendo a Suvinil Azul Sereno com acabamento fosco. Veja abaixo uma simulação de aplicação em ambiente externo: [imagem gerada]"
+    }
+]

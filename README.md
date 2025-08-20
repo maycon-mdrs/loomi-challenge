@@ -12,6 +12,7 @@ PintAI é um Catálogo Inteligente de Tintas com IA. O projeto consiste em um As
   * [🧠 Ferramentas de IA Utilizadas](#-ferramentas-de-ia-utilizadas)
   * [💬 Exemplos de Prompts Utilizados](#-exemplos-de-prompts-utilizados)
   * [🛠️ Decisões Técnicas Baseadas nas Sugestões](#%EF%B8%8F-decisões-técnicas-baseadas-nas-sugestões)
+* [🧪 Testes das respostas da LLM](#-testes-das-respostas-da-llm)
 * [📁 Estrutura de Pastas](#estrutura-de-pastas)
 <!--te-->
 
@@ -143,6 +144,38 @@ uvicorn app.main:app --reload
 - **Documentação**: Uso de Swagger
 - **"Deploy"**: Docker + Docker Compose para garantir portabilidade e fácil validação do ambiente.
 
+
+# Testes das respostas da LLM
+
+Para garantir a qualidade das respostas do assistente, o projeto utiliza a seguinte abordagem: uma LLM é usada como “juiz” para avaliar automaticamente as respostas geradas pelo sistema.
+
+O teste automatizado `tests/test_llm_quality.py` funciona assim:
+- Para cada exemplo de pergunta e resposta esperada, o supervisor gera uma resposta. Os exemplos estão em `tests/data/questions_answers_examples.json`.
+- Essa resposta gerada é enviada para uma LLM, junto com a resposta esperada, pedindo uma avaliação comparativa.
+- A LLM retorna um veredito em formato JSON, indicando se as respostas são “similares” e atribuindo um score de 0 a 10.
+- O teste só passa se o score for maior ou igual a 7 e o veredito for “similar”.
+
+Todos os resultados dessas avaliações são salvos automaticamente em `tests/results/results_{timestamp}.json`. Esse arquivo registra cada pergunta, resposta esperada, resposta gerada e a avaliação da LLM, permitindo acompanhar a evolução da qualidade do sistema.
+
+Exemplo de registro salvo:
+```json
+{
+  "pergunta": "Quero pintar meu quarto, mas prefiro algo que seja fácil de limpar e sem cheiro forte. Tem alguma sugestão?",
+  "esperada": "Para ambientes internos como quartos, uma boa opção é a Suvinil Toque de Seda, que possui acabamento acetinado, é lavável e tem tecnologia sem odor.",
+  "resposta_gerada": "Para ambientes internos, recomendamos Suvinil Toque de Seda, que é lavável e sem cheiro forte.",
+  "avaliacao": {
+    "score": 9,
+    "veredito": "similar"
+  }
+}
+```
+
+Para rodar os testes e gerar o arquivo de resultados:
+```bash
+pytest tests/test_llm_quality.py -p no:warnings
+```
+
+> Os testes que tendem a gerar imagens (como o agente de visualização), tendem a falhar, pois não há uma LLM para avaliar a qualidade da imagem gerada.
 
 # Estrutura de Pastas
 ```plaintext
