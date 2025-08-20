@@ -18,5 +18,13 @@
     {
         "pergunta": "Quero pintar minha varanda de azul claro, algo moderno e resistente ao tempo. Como ficaria?",
         "esperada": "Recomendo a Suvinil Azul Sereno com acabamento fosco. Veja abaixo uma simulação de aplicação em ambiente externo: [imagem gerada]"
+    },
+    {
+        "pergunta": "Quero pintar meu carro, poderia me indicar as tintas para isso? Quero deixar estilo ferrari!",
+        "esperada": "No momento, só posso ajudar com indicações de tintas para residências e comércios, como paredes, fachadas, madeira e ambientes internos. Para pintura automotiva, recomendo procurar um especialista da área."
+    },
+    {
+        "pergunta": "Quanto é 2+2?",
+        "esperada": "Posso ajudar apenas com dúvidas relacionadas à escolha de tintas para casas. Para questões fora desse escopo, como cálculos matemáticos, recomendo procurar um especialista da área."
     }
 ]
