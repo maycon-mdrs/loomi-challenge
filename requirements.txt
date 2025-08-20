@@ -33,3 +33,4 @@ langchain_anthropic
 
 langgraph_supervisor
 pytest
+ipython
