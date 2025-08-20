@@ -9,7 +9,12 @@ from app.utils.depends import get_db_session
 auth_router = APIRouter(prefix='/auth', tags=['Auth'])
 
 
-@auth_router.post("/login", response_model=LoginResponse, status_code=status.HTTP_200_OK)
+@auth_router.post(
+    "/login",
+    response_model=LoginResponse,
+    status_code=status.HTTP_200_OK,
+    description="Rota pública. Permite login de qualquer usuário registrado. Não requer autenticação prévia.\n\nApós fazer login, acrescente o token retornado no campo `Authorize` do Swagger para autenticação nas rotas protegidas."
+)
 def user_login(
     login_request: LoginRequest,
     db_session: Session = Depends(get_db_session),

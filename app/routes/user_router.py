@@ -9,7 +9,12 @@ from app.utils.depends import admin_required, get_current_user, get_db_session
 user_router = APIRouter(prefix="/users", tags=["Users"])
 
 
-@user_router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+@user_router.post(
+    "/register",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED,
+    description="Rota pública. Permite o cadastro de novos usuários. Não requer autenticação."
+)
 def create_user(user: UserRegister, db_session: Session = Depends(get_db_session)):
     user_service = UserService(db_session=db_session)
     user_model = user_service.register_user(user=user)
@@ -22,7 +27,11 @@ def create_user(user: UserRegister, db_session: Session = Depends(get_db_session
     )
 
 
-@user_router.get("/", response_model=list[UserResponse])
+@user_router.get(
+    "/",
+    response_model=list[UserResponse],
+    description="Rota protegida. Apenas usuários autenticados podem visualizar a lista de usuários."
+)
 def get_all_users(
     db_session: Session = Depends(get_db_session),
     current_user: UserModel = Depends(get_current_user),
@@ -41,7 +50,11 @@ def get_all_users(
     ]
 
 
-@user_router.get("/{user_id}", response_model=UserResponse)
+@user_router.get(
+    "/{user_id}",
+    response_model=UserResponse,
+    description="Rota protegida. Apenas usuários autenticados podem consultar dados de um usuário pelo ID."
+)
 def get_user_by_id(
     user_id: int,
     db_session: Session = Depends(get_db_session),
@@ -58,7 +71,11 @@ def get_user_by_id(
     )
 
 
-@user_router.get("/email/{email}", response_model=UserResponse)
+@user_router.get(
+    "/email/{email}",
+    response_model=UserResponse,
+    description="Rota protegida. Apenas usuários autenticados podem consultar dados de um usuário pelo e-mail."
+)
 def get_user_by_email(
     email: str,
     db_session: Session = Depends(get_db_session),
@@ -75,7 +92,11 @@ def get_user_by_email(
     )
 
 
-@user_router.delete("/{user_id}", status_code=status.HTTP_200_OK)
+@user_router.delete(
+    "/{user_id}",
+    status_code=status.HTTP_200_OK,
+    description="Rota restrita a administradores. Apenas usuários com permissão de admin podem remover usuários."
+)
 def delete_user(
     user_id: int,
     db_session: Session = Depends(get_db_session),
