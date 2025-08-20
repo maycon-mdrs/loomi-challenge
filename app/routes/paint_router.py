@@ -9,7 +9,12 @@ from app.utils.depends import admin_required, get_db_session
 paint_router = APIRouter(prefix="/paints", tags=["Paints"])
 
 
-@paint_router.post("/register", response_model=PaintResponse, status_code=status.HTTP_201_CREATED)
+@paint_router.post(
+    "/register",
+    response_model=PaintResponse,
+    status_code=status.HTTP_201_CREATED,
+    description="Rota restrita a administradores. Apenas usuários com permissão de admin podem registrar novas tintas."
+)
 def create_paint(
     paint: PaintRegister,
     db_session: Session = Depends(get_db_session),
@@ -29,7 +34,12 @@ def create_paint(
     )
 
 
-@paint_router.patch("/{paint_id}", response_model=PaintResponse, status_code=status.HTTP_200_OK)
+@paint_router.patch(
+    "/{paint_id}",
+    response_model=PaintResponse,
+    status_code=status.HTTP_200_OK,
+    description="Rota restrita a administradores. Apenas usuários com permissão de admin podem editar tintas."
+)
 def update_paint(
     paint_id: int,
     paint: PaintUpdate,
@@ -51,7 +61,11 @@ def update_paint(
     )
 
 
-@paint_router.get("/", response_model=list[PaintResponse])
+@paint_router.get(
+    "/",
+    response_model=list[PaintResponse],
+    description="Rota pública. Qualquer usuário pode consultar todas as tintas cadastradas."
+)
 def get_all_paints(db_session: Session = Depends(get_db_session)):
     paint_service = PaintService(db_session=db_session)
     paints = paint_service.get_all_paints()
@@ -70,7 +84,11 @@ def get_all_paints(db_session: Session = Depends(get_db_session)):
     ]
 
 
-@paint_router.get("/{paint_id}", response_model=PaintResponse)
+@paint_router.get(
+    "/{paint_id}",
+    response_model=PaintResponse,
+    description="Rota pública. Qualquer usuário pode consultar uma tinta pelo ID."
+)
 def get_paint_by_id(paint_id: int, db_session: Session = Depends(get_db_session)):
     paint_service = PaintService(db_session=db_session)
     paint = paint_service.get_paint_by_id(paint_id=paint_id)
@@ -86,7 +104,11 @@ def get_paint_by_id(paint_id: int, db_session: Session = Depends(get_db_session)
     )
 
 
-@paint_router.get("/name/{name}", response_model=PaintResponse)
+@paint_router.get(
+    "/name/{name}",
+    response_model=PaintResponse,
+    description="Rota pública. Qualquer usuário pode consultar tintas pelo nome."
+)
 def get_paints_by_name(name: str, db_session: Session = Depends(get_db_session)):
     paint_service = PaintService(db_session=db_session)
     paints = paint_service.get_paints_by_name(name=name)
@@ -105,7 +127,11 @@ def get_paints_by_name(name: str, db_session: Session = Depends(get_db_session))
     ]
 
 
-@paint_router.get("/color/{color}", response_model=list[PaintResponse])
+@paint_router.get(
+    "/color/{color}",
+    response_model=list[PaintResponse],
+    description="Rota pública. Qualquer usuário pode consultar tintas pela cor."
+)
 def get_paints_by_color(color: str, db_session: Session = Depends(get_db_session)):
     paint_service = PaintService(db_session=db_session)
     paints = paint_service.get_paints_by_color(color=color)
@@ -124,7 +150,11 @@ def get_paints_by_color(color: str, db_session: Session = Depends(get_db_session
     ]
 
 
-@paint_router.delete("/{paint_id}", status_code=status.HTTP_200_OK)
+@paint_router.delete(
+    "/{paint_id}",
+    status_code=status.HTTP_200_OK,
+    description="Rota restrita a administradores. Apenas usuários com permissão de admin podem remover tintas."
+)
 def delete_paint(
     paint_id: int,
     db_session: Session = Depends(get_db_session),

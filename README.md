@@ -3,6 +3,13 @@
 
 PintAI é um Catálogo Inteligente de Tintas com IA. O projeto consiste em um Assistente Virtual especializado em tintas, capaz de recomendar o produto Suvinil ideal para cada pessoa, considerando seu contexto, dúvidas e preferências. Utilizando inteligência artificial, o PintAI atua como um especialista, facilitando a escolha da tinta mais adequada para cada situação.
 
+## 🚀 Deploy
+
+- [PintAI - swagger](https://loomi-ms5kf.ondigitalocean.app/docs)  
+- API: [https://loomi-ms5kf.ondigitalocean.app/api/v1/](https://loomi-ms5kf.ondigitalocean.app/api/v1)
+
+
+# 📚 Sumário
 <!--ts-->
 * [📋 Requisitos](#requisitos)
 * [⚙️ Setup do Projeto](#setup-do-projeto)
