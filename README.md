@@ -9,9 +9,9 @@ PintAI é um Catálogo Inteligente de Tintas com IA. O projeto consiste em um As
 * [🐋 Rodar com Docker](#rodar-com-docker)
 * [💻 Rodar localmente](#rodar-localmente)
 * [ "Arquitetura" de solução IA](#arquitetura-de-solução-ia)
-  * [🧠 Ferramentas de IA Utilizadas](#🧠-ferramentas-de-ia-utilizadas)
-  * [💬 Exemplos de Prompts Utilizados](#💬-exemplos-de-prompts-utilizados)
-  * [🛠️ Decisões Técnicas Baseadas nas Sugestões](#🛠️-decisões-técnicas-baseadas-nas-sugestões)
+  * [🧠 Ferramentas de IA Utilizadas](#-ferramentas-de-ia-utilizadas)
+  * [💬 Exemplos de Prompts Utilizados](#-exemplos-de-prompts-utilizados)
+  * [🛠️ Decisões Técnicas Baseadas nas Sugestões](#-decisões-técnicas-baseadas-nas-sugestões)
 * [📁 Estrutura de Pastas](#estrutura-de-pastas)
 <!--te-->
 
