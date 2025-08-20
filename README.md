@@ -12,7 +12,7 @@ PintAI é um Catálogo Inteligente de Tintas com IA. O projeto consiste em um As
   * [🧠 Ferramentas de IA Utilizadas](#-ferramentas-de-ia-utilizadas)
   * [💬 Exemplos de Prompts Utilizados](#-exemplos-de-prompts-utilizados)
   * [🛠️ Decisões Técnicas Baseadas nas Sugestões](#%EF%B8%8F-decisões-técnicas-baseadas-nas-sugestões)
-* [🧪 Testes das respostas da LLM](#-testes-das-respostas-da-llm)
+* [🧪 Testes das respostas da LLM](#testes-das-respostas-da-llm)
 * [📁 Estrutura de Pastas](#estrutura-de-pastas)
 <!--te-->
 
