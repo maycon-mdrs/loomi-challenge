@@ -5,6 +5,8 @@ from passlib.context import CryptContext
 
 load_dotenv()
 
+API_PREFIX = "/api/v1"
+
 SECRET_KEY = config("SECRET_KEY")
 ALGORITHM = config("ALGORITHM")
 DATABASE_URL = config("DATABASE_URL")

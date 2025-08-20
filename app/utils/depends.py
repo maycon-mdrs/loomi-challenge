@@ -1,13 +1,13 @@
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from app.database.connection import Session as CustomSession
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPBearer
 from app.exceptions.auth_exceptions import AdminAccessRequiredException
 from app.models.user_model import UserModel, UserRole
 from app.services.auth_service import AuthService
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+oauth2_scheme = HTTPBearer()
 
 
 def get_db_session():
@@ -19,6 +19,8 @@ def get_db_session():
 
 
 def get_current_user(db_session: Session = Depends(get_db_session), token=Depends(oauth2_scheme)):
+    if hasattr(token, "credentials"):
+        token = token.credentials
     auth_service = AuthService(db_session=db_session)
     return auth_service.verify_token(token)
 

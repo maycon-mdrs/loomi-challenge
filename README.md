@@ -13,6 +13,9 @@ PintAI é um Catálogo Inteligente de Tintas com IA. O projeto consiste em um As
   * [💬 Exemplos de Prompts Utilizados](#-exemplos-de-prompts-utilizados)
   * [🛠️ Decisões Técnicas Baseadas nas Sugestões](#%EF%B8%8F-decisões-técnicas-baseadas-nas-sugestões)
 * [💬 Endpoint de Conversa](#endpoint-de-conversa)
+* [Acesso](#acesso)
+  * [Documentação](#documentação)
+  * [Usuários de Teste](#usuários-de-teste)
 * [🧪 Testes das respostas da LLM](#testes-das-respostas-da-llm)
 * [📁 Estrutura de Pastas](#estrutura-de-pastas)
 <!--te-->
@@ -226,6 +229,18 @@ pytest tests/test_llm_quality.py -p no:warnings
 ```
 
 > Os testes que tendem a gerar imagens (como o agente de visualização), tendem a falhar, pois não há uma LLM para avaliar a qualidade da imagem gerada.
+
+# Acesso
+
+### Documentação
+- [Swagger UI](http://localhost:8000/docs)
+
+### Usuários de Teste
+
+| Tipo de Usuário   | Email               | Senha  |
+|-------------------|---------------------|--------|
+| Admin             | admin@example.com   | 123    |
+| Usuário Comum     | user@example.com    | 123    |
 
 # Estrutura de Pastas
 ```plaintext

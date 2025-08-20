@@ -12,8 +12,21 @@ class PaintRepository:
     def get_by_id(self, paint_id: int) -> PaintModel:
         return self.db_session.query(PaintModel).filter(PaintModel.id == paint_id).first()
     
-    def get_by_name(self, name: str) -> PaintModel:
-        return self.db_session.query(PaintModel).filter(PaintModel.paint_name.ilike(name.lower())).first()
+    def get_paints_by_name(self, name: str) -> list[PaintModel]:
+        return self.db_session.query(PaintModel).filter(
+            PaintModel.paint_name.ilike(f"%{name}%")
+        ).all()
+    
+    def get_paints_by_color(self, color: str) -> list[PaintModel]:
+        return self.db_session.query(PaintModel).filter(
+            PaintModel.color.ilike(f"%{color}%")
+        ).all()
+    
+    def get_by_name_and_color(self, name: str, color: str) -> PaintModel:
+        return self.db_session.query(PaintModel).filter(
+            PaintModel.paint_name.ilike(name),
+            PaintModel.color.ilike(color)
+        ).first()
     
     def create(self, paint: PaintModel) -> PaintModel:
         self.db_session.add(paint)
