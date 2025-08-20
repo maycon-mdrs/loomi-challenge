@@ -12,6 +12,7 @@ PintAI é um Catálogo Inteligente de Tintas com IA. O projeto consiste em um As
   * [🧠 Ferramentas de IA Utilizadas](#-ferramentas-de-ia-utilizadas)
   * [💬 Exemplos de Prompts Utilizados](#-exemplos-de-prompts-utilizados)
   * [🛠️ Decisões Técnicas Baseadas nas Sugestões](#%EF%B8%8F-decisões-técnicas-baseadas-nas-sugestões)
+* [💬 Endpoint de Conversa](#endpoint-de-conversa)
 * [🧪 Testes das respostas da LLM](#testes-das-respostas-da-llm)
 * [📁 Estrutura de Pastas](#estrutura-de-pastas)
 <!--te-->
@@ -144,6 +145,55 @@ uvicorn app.main:app --reload
 - **Documentação**: Uso de Swagger
 - **"Deploy"**: Docker + Docker Compose para garantir portabilidade e fácil validação do ambiente.
 
+# Endpoint de Conversa
+
+Aqui abordaremos um poquinho sobre o usso do endpoint de conversa, já que ele existe uma "lógica". Para interagir com o assistente, utilize o endpoint `/api/v1/chat`, que aceita requisições POST com o seguinte corpo:
+
+```json
+{
+  "user_id": 123, # caso não tenha um usuário, pode ser qualquer número inteiro
+  "chat_id": null,
+  "prompt": "Quero pintar meu quarto, mas prefiro algo que seja fácil de limpar e sem cheiro forte. Tem alguma sugestão?"
+}
+```
+
+**Fluxo de uso:**
+- **Primeira mensagem:** Ao iniciar uma conversa, envie `chat_id` como `null`. O backend irá criar uma nova sessão e retornar um `chat_id` único.
+- **Continuação:** Para continuar a conversa, utilize o `chat_id` retornado anteriormente no corpo da requisição. Assim, o contexto da conversa será mantido.
+
+Exemplo de requisição inicial:
+```bash
+curl -X POST "http://localhost:8000/api/v1/chat" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": 123,
+    "chat_id": null,
+    "prompt": "Quero pintar meu quarto, mas prefiro algo que seja fácil de limpar e sem cheiro forte. Tem alguma sugestão?"
+  }'
+```
+
+Exemplo de requisição para continuar a conversa:
+```bash
+curl -X POST "http://localhost:8000/api/v1/chat" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": 123,
+    "chat_id": "<chat_id_retornado>",
+    "prompt": "Quero pintar minha varanda de azul claro, algo moderno e resistente ao tempo. Como ficaria?"
+  }'
+```
+
+O retorno segue o modelo abaixo:
+```json
+{
+  "user_id": 123,
+  "chat_id": "<chat_id_retornado>",
+  "response": "Sugiro o tom Cinza Urbano da linha Suvinil Fosco Completo. O que acha?",
+  "context": [ ... ]
+}
+```
+
+Assim, basta guardar o `chat_id` retornado para manter o histórico e o contexto da conversa.
 
 # Testes das respostas da LLM
 
