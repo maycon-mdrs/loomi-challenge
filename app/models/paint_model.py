@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Text, Enum as SqlEnum, func
+from sqlalchemy import Column, Integer, String, DateTime, Text, Enum as SqlEnum, func, UniqueConstraint
 from enum import Enum
 from app.database.base import Base
 
@@ -11,9 +11,12 @@ class EnvironmentPaintEnum(Enum):
 
 class PaintModel(Base):
 	__tablename__ = "paints"
+	__table_args__ = (
+        UniqueConstraint('paint_name', 'color', name='uq_paint_name_color'),
+    )
 
 	id = Column(Integer, primary_key=True, index=True)
-	paint_name = Column(String, nullable=False, unique=True)
+	paint_name = Column(String, nullable=False)
 	color = Column(String, nullable=False)
 	surface_type = Column(String, nullable=False)
 	environment = Column(SqlEnum(EnvironmentPaintEnum), nullable=False)   # indoor, outdoor, both

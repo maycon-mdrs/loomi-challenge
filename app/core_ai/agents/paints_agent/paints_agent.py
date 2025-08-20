@@ -1,5 +1,5 @@
 from langgraph.prebuilt import create_react_agent
-from app.core_ai.agents.paints_agent.tools import retrieve_tintas, lista_tintas, lista_tinta_by_name, lista_tinta_by_id
+from app.core_ai.agents.paints_agent.tools import retrieve_tintas, lista_tintas, lista_tintas_by_nome, lista_tintas_by_cor, lista_tinta_by_id
 from app.core_ai.models_config import get_model
 
 
@@ -28,7 +28,7 @@ def create_paints_agent(base_prompt=""):
     paints_agent = create_react_agent(
         debug=True,
         model=model,
-        tools=[retrieve_tintas, lista_tintas, lista_tinta_by_name, lista_tinta_by_id],
+        tools=[retrieve_tintas, lista_tintas, lista_tintas_by_nome, lista_tintas_by_cor, lista_tinta_by_id],
         name=PAINTS_AGENT_NAME,
         prompt=base_prompt + " " + PAINTS_AGENT_PROMPT_TEXT,
     )
