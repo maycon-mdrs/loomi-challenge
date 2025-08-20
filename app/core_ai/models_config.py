@@ -1,5 +1,5 @@
 from app.core_ai.openai_model import get_openai_model
-from app.config import MODEL_PAINTS, TEMPERATURE_PAINTS, MODEL_SUPERVISOR, TEMPERATURE_SUPERVISOR
+from app.config import MODEL_VIZUALIZER, TEMPERATURE_VIZUALIZER, MODEL_PAINTS, TEMPERATURE_PAINTS, MODEL_SUPERVISOR, TEMPERATURE_SUPERVISOR
 
 
 class ModelConfig:
@@ -15,6 +15,10 @@ class ModelConfig:
 
     def _init_models(self):
         self.models = {
+            "visualizer_expert": get_openai_model(
+                model_name=MODEL_VIZUALIZER,
+                temperature=TEMPERATURE_VIZUALIZER,
+            ),
             "paints_expert": get_openai_model(
                 model_name=MODEL_PAINTS,
                 temperature=TEMPERATURE_PAINTS,

@@ -37,7 +37,7 @@ def upgrade() -> None:
     sa.Column('paint_name', sa.String(), nullable=False),
     sa.Column('color', sa.String(), nullable=False),
     sa.Column('surface_type', sa.String(), nullable=False),
-    sa.Column('environment', sa.Enum('INDOOR', 'OUTDOOR', 'BOTH', name='environmentpaintenum'), nullable=False),
+    sa.Column('environment', sa.Enum('INTERNO', 'EXTERNO', 'AMBOS', name='environmentpaintenum'), nullable=False),
     sa.Column('finish_type', sa.String(), nullable=False),
     sa.Column('features', sa.Text(), nullable=True),
     sa.Column('line', sa.String(), nullable=True),
@@ -52,7 +52,7 @@ def upgrade() -> None:
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.Column('role', sa.Enum('admin', 'user', name='userrole'), nullable=False),
+    sa.Column('role', sa.Enum('ADMIN', 'USER', name='userrole'), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )

@@ -1,0 +1,47 @@
+[
+  {
+    "pergunta": "Quero pintar meu quarto, mas prefiro algo que seja fácil de limpar e sem cheiro forte. Tem alguma sugestão?",
+    "esperada": "Para ambientes internos como quartos, uma boa opção é a Suvinil Toque de Seda, que possui acabamento acetinado, é lavável e tem tecnologia sem odor.",
+    "resposta_gerada": "Tenho duas ótimas opções da Suvinil para pintar seu quarto, ambas fáceis de limpar e com baixo odor:\n\n1. Suvinil Toque de Seda (Premium, acabamento acetinado, cor Branco Neve): É lavável, tem baixo odor durante e após a pintura, fácil de limpar, excelente cobertura e rendimento. Ideal para quem busca praticidade e ambientes mais saudáveis, além de ser indicada para quem tem crianças ou pets.\n\n2. Suvinil Criativa (Standard, acabamento fosco, cor Verde Menta): Também é lavável, sem cheiro forte e fácil de aplicar. Uma opção mais econômica, mantendo a facilidade de limpeza.\n\nSe quiser mais detalhes sobre alguma delas ou visualizar outras cores, é só me avisar!",
+    "avaliacao": {
+      "score": 8,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Preciso pintar a fachada da minha casa. Bate muito sol e chove bastante por aqui. Qual tinta você recomenda?",
+    "esperada": "Consultei nosso especialista em ambientes externos e o agente de resistência climática. Recomendamos a Suvinil Fachada Acrílica, que possui proteção contra chuva e sol, além de ser anti-mofo e lavável.",
+    "resposta_gerada": "Para pintar a fachada da sua casa, que recebe muito sol e chuva, recomendo a Suvinil Fachada Acrílica. Essa tinta é própria para ambientes externos, possui alta resistência ao sol e à chuva, além de ser anti-mofo e lavável. É uma opção premium, garantindo maior durabilidade e proteção para a sua fachada.\n\nSe quiser conhecer outras opções ou cores, posso listar as tintas disponíveis para fachadas externas. Deseja ver mais alternativas?",
+    "avaliacao": {
+      "score": 9,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Você tem alguma tinta para madeira que seja resistente ao calor?",
+    "esperada": "Sim! A Suvinil Esmalte Sintético é ideal para madeira e resistente ao calor, além de ter acabamento brilhante. Deseja mais opções?",
+    "resposta_gerada": "Sim, tenho uma opção para você! A Suvinil Esmalte Sintético é indicada para madeira (e também para ferro) e possui alta durabilidade, além de ser resistente ao calor e impermeável. É uma tinta da linha Premium, com acabamento brilhante, e pode ser utilizada tanto em ambientes internos quanto externos.\n\nSe precisar de mais informações ou quiser outras opções de cor ou acabamento, estou à disposição!",
+    "avaliacao": {
+      "score": 9,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Quero pintar meu escritório com um tom de cinza moderno. Mostra como ficaria?",
+    "esperada": "Sugiro o tom Cinza Urbano da linha Suvinil Fosco Completo. O que acha?",
+    "resposta_gerada": "Aqui está uma simulação de como seu escritório pode ficar com um tom de cinza moderno aplicado nas paredes:\n\n![Visualização do escritório com tom de cinza moderno](https://oaidalleapiprodscus.blob.core.windows.net/private/org-3QKg3kOfjj4Q3uPO7NqZRQrB/user-QO6U7N75ay2IPkAN4NIi6mjj/img-CqCREx8kVGFnFzzDIKvrlYsl.png?st=2025-08-20T03%3A13%3A12Z&se=2025-08-20T05%3A13%3A12Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=c6569cb0-0faa-463d-9694-97df3dc1dfb1&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-19T08%3A49%3A33Z&ske=2025-08-20T08%3A49%3A33Z&sks=b&skv=2024-08-04&sig=zFTrkoHn0zP3xwTi%2B0wJ3%2BxyN9oExdx3yrjeJwh894U%3D)\n\nSe quiser sugestões de tons específicos de cinza Suvinil ou recomendações de acabamento, é só me avisar!",
+    "avaliacao": {
+      "score": 6,
+      "veredito": "não similar"
+    }
+  },
+  {
+    "pergunta": "Quero pintar minha varanda de azul claro, algo moderno e resistente ao tempo. Como ficaria?",
+    "esperada": "Recomendo a Suvinil Azul Sereno com acabamento fosco. Veja abaixo uma simulação de aplicação em ambiente externo: [imagem gerada]",
+    "resposta_gerada": "Aqui está uma simulação visual de como sua varanda pode ficar pintada em um tom de azul claro, moderno e resistente ao tempo:  \n![Simulação de varanda azul claro](https://oaidalleapiprodscus.blob.core.windows.net/private/org-3QKg3kOfjj4Q3uPO7NqZRQrB/user-QO6U7N75ay2IPkAN4NIi6mjj/img-80uLwZtzEL5LmWm4XWuyXunm.png?st=2025-08-20T03%3A13%3A34Z&se=2025-08-20T05%3A13%3A34Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=31d50bd4-689f-439b-a875-f22bd677744d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-19T14%3A57%3A40Z&ske=2025-08-20T14%3A57%3A40Z&sks=b&skv=2024-08-04&sig=ra2aJYjBsTUiRo01U66qwa6Js1FHKDQUnSHzQ6Gwt8s%3D)\n\nSe quiser sugestões de produtos Suvinil e acabamentos ideais para garantir resistência e beleza, é só me avisar!",
+    "avaliacao": {
+      "score": 8,
+      "veredito": "similar"
+    }
+  }
+]

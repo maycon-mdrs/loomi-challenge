@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from passlib.context import CryptContext
 from app.config import crypt_context
 
 from app.DTOs.user_dtos import UserRegister

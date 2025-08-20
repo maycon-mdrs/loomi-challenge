@@ -87,19 +87,41 @@ def get_paint_by_id(paint_id: int, db_session: Session = Depends(get_db_session)
 
 
 @paint_router.get("/name/{name}", response_model=PaintResponse)
-def get_paint_by_name(name: str, db_session: Session = Depends(get_db_session)):
+def get_paints_by_name(name: str, db_session: Session = Depends(get_db_session)):
     paint_service = PaintService(db_session=db_session)
-    paint = paint_service.get_paint_by_name(name=name)
-    return PaintResponse(
-        id=paint.id,
-        paint_name=paint.paint_name,
-        color=paint.color,
-        surface_type=paint.surface_type,
-        environment=paint.environment,
-        finish_type=paint.finish_type,
-        features=paint.features,
-        line=paint.line,
-    )
+    paints = paint_service.get_paints_by_name(name=name)
+    return [
+        PaintResponse(
+            id=paint.id,
+            paint_name=paint.paint_name,
+            color=paint.color,
+            surface_type=paint.surface_type,
+            environment=paint.environment,
+            finish_type=paint.finish_type,
+            features=paint.features,
+            line=paint.line,
+        )
+        for paint in paints
+    ]
+
+
+@paint_router.get("/color/{color}", response_model=list[PaintResponse])
+def get_paints_by_color(color: str, db_session: Session = Depends(get_db_session)):
+    paint_service = PaintService(db_session=db_session)
+    paints = paint_service.get_paints_by_color(color=color)
+    return [
+        PaintResponse(
+            id=paint.id,
+            paint_name=paint.paint_name,
+            color=paint.color,
+            surface_type=paint.surface_type,
+            environment=paint.environment,
+            finish_type=paint.finish_type,
+            features=paint.features,
+            line=paint.line,
+        )
+        for paint in paints
+    ]
 
 
 @paint_router.delete("/{paint_id}", status_code=status.HTTP_200_OK)

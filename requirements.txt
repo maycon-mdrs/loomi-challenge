@@ -32,3 +32,4 @@ langgraph
 langchain_anthropic
 
 langgraph_supervisor
+pytest

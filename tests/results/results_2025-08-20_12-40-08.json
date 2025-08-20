@@ -1,0 +1,65 @@
+[
+  {
+    "pergunta": "Quero pintar meu quarto, mas prefiro algo que seja fácil de limpar e sem cheiro forte. Tem alguma sugestão?",
+    "esperada": "Para ambientes internos como quartos, uma boa opção é a Suvinil Toque de Seda, que possui acabamento acetinado, é lavável e tem tecnologia sem odor.",
+    "resposta_gerada": "Tenho duas ótimas opções de tintas Suvinil para pintar seu quarto, ambas com fácil limpeza e baixo odor:\n\n1. Suvinil Toque de Seda (acabamento acetinado, linha Premium)\n- Indicada para ambientes internos\n- Fácil de limpar, lavável e com baixo odor durante e após a pintura\n- Proporciona acabamento sofisticado, toque suave e alta cobertura\n\n2. Suvinil Criativa (acabamento fosco, linha Standard)\n- Também para ambientes internos\n- Sem cheiro, fácil aplicação e lavável\n\nSe quiser saber mais detalhes sobre alguma delas ou ver outras cores, é só me avisar! Qual cor ou acabamento você prefere?",
+    "avaliacao": {
+      "score": 9,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Preciso pintar a fachada da minha casa. Bate muito sol e chove bastante por aqui. Qual tinta você recomenda?",
+    "esperada": "Consultei nosso especialista em ambientes externos e o agente de resistência climática. Recomendamos a Suvinil Fachada Acrílica, que possui proteção contra chuva e sol, além de ser anti-mofo e lavável.",
+    "resposta_gerada": "Para pintar a fachada da sua casa, que recebe muito sol e chuva, recomendo a Suvinil Fachada Acrílica. Essa tinta é própria para ambientes externos, possui alta resistência ao sol e à chuva, além de ser anti-mofo e lavável. O acabamento é fosco e ela é indicada para superfícies de alvenaria.\n\nSe quiser saber sobre outras opções de cores ou acabamentos, posso listar as disponíveis para você! Se já tiver uma cor em mente, me informe para que eu possa verificar a disponibilidade.",
+    "avaliacao": {
+      "score": 9,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Você tem alguma tinta para madeira que seja resistente ao calor?",
+    "esperada": "Sim! A Suvinil Esmalte Sintético é ideal para madeira e resistente ao calor, além de ter acabamento brilhante. Deseja mais opções?",
+    "resposta_gerada": "Sim, a Suvinil Esmalte Sintético é indicada para aplicação em madeira e possui alta durabilidade, além de ser resistente ao calor. Ela oferece acabamento brilhante e pode ser usada tanto em ambientes internos quanto externos.\n\nSe quiser saber mais detalhes sobre essa tinta ou sobre as opções de cores disponíveis, é só me informar!",
+    "avaliacao": {
+      "score": 9,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Quero pintar meu escritório com um tom de cinza moderno. Mostra como ficaria?",
+    "esperada": "Sugiro o tom Cinza Urbano da linha Suvinil Fosco Completo. O que acha?",
+    "resposta_gerada": "Aqui está uma simulação de como seu escritório pode ficar com um tom de cinza moderno aplicado nas paredes:  \n![Visualização do escritório com tom de cinza moderno](https://oaidalleapiprodscus.blob.core.windows.net/private/org-3QKg3kOfjj4Q3uPO7NqZRQrB/user-QO6U7N75ay2IPkAN4NIi6mjj/img-gexUiqmRMJ8sQxkIUlU0D7oX.png?st=2025-08-20T14%3A40%3A54Z&se=2025-08-20T16%3A40%3A54Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=31d50bd4-689f-439b-a875-f22bd677744d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-20T02%3A23%3A39Z&ske=2025-08-21T02%3A23%3A39Z&sks=b&skv=2024-08-04&sig=GPAlHrLNRv0LV%2BGkc1KZd8DO8V4KqwMVM21bvizvAvk%3D)\n\nSe quiser sugestões de tons de cinza Suvinil ou recomendações de acabamento para seu escritório, é só me avisar!",
+    "avaliacao": {
+      "score": 7,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Quero pintar minha varanda de azul claro, algo moderno e resistente ao tempo. Como ficaria?",
+    "esperada": "Recomendo a Suvinil Azul Sereno com acabamento fosco. Veja abaixo uma simulação de aplicação em ambiente externo: [imagem gerada]",
+    "resposta_gerada": "Para te recomendar a tinta ideal, preciso confirmar alguns detalhes:\n\n1. A varanda é um ambiente externo, correto?\n2. A superfície a ser pintada é parede de alvenaria, madeira, metal ou outro material?\n3. Você prefere um acabamento fosco, acetinado ou brilhante?\n\nCom essas informações, consigo indicar a tinta Suvinil mais adequada em azul claro, moderna e resistente ao tempo, além de descrever como ficará o resultado!",
+    "avaliacao": {
+      "score": 4,
+      "veredito": "não similar"
+    }
+  },
+  {
+    "pergunta": "Quero pintar meu carro, poderia me indicar as tintas para isso? Quero deixar estilo ferrari!",
+    "esperada": "No momento, só posso ajudar com indicações de tintas para residências e comércios, como paredes, fachadas, madeira e ambientes internos. Para pintura automotiva, recomendo procurar um especialista da área.",
+    "resposta_gerada": "Desculpe, mas só posso ajudar com recomendações de tintas Suvinil para residências e comércios, como casas, apartamentos, escritórios e ambientes similares. Não tenho informações sobre tintas para veículos. Se precisar de ajuda para pintar algum ambiente da sua casa ou comércio, estou à disposição!",
+    "avaliacao": {
+      "score": 9,
+      "veredito": "similar"
+    }
+  },
+  {
+    "pergunta": "Quanto é 2+2?",
+    "esperada": "Posso ajudar apenas com dúvidas relacionadas à escolha de tintas para casas. Para questões fora desse escopo, como cálculos matemáticos, recomendo procurar um especialista da área.",
+    "resposta_gerada": "Desculpe, mas só posso responder perguntas relacionadas à escolha de tintas Suvinil, ambientes residenciais ou comerciais, e recomendações de pintura. Se precisar de ajuda com esses temas, estou à disposição!",
+    "avaliacao": {
+      "score": 8,
+      "veredito": "similar"
+    }
+  }
+]

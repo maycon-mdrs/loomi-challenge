@@ -4,8 +4,8 @@ from app.database.base import Base
 
 
 class UserRole(Enum):
-    admin = "ADMIN"
-    user = "USER"
+    ADMIN = "ADMIN"
+    USER = "USER"
 
 
 class UserModel(Base):

@@ -1,5 +1,7 @@
 import os
+from IPython.display import Image, display
 from langgraph_supervisor import create_supervisor
+from app.core_ai.agents.dalle_agent.dalle_agent import create_dalle_agent
 from app.core_ai.agents.paints_agent.paints_agent import create_paints_agent
 from app.core_ai.models_config import ModelConfig
 from app.core_ai.agents.base_prompt import PROMPT_BASE_TEXT
@@ -17,15 +19,16 @@ base_prompt = PROMPT_BASE_TEXT.format(
 )
 
 _paints_agent = create_paints_agent(base_prompt=base_prompt)
+_dalle_agent = create_dalle_agent(base_prompt=base_prompt)
 
 _SUPERVISOR_WORKFLOW = create_supervisor(
-    agents=[_paints_agent],
+    agents=[_paints_agent, _dalle_agent],
     model=model,
     prompt=(
         system_prompt_content
         + "\n\nVocê é um supervisor que gerencia agentes especializados em tintas e recomendações de pintura. "
         "Para questões relacionadas à escolha de tintas (acabamento, ambiente, tipo de superfície, cor, linha, resistência), utilize exclusivamente o agente 'paints_expert'. "
-        "Se o usuário solicitar simulação visual da tinta aplicada em um ambiente, encaminhe a solicitação para o agente 'visualizer_expert'. "
+        "Se o usuário solicitar simulação visual da tinta aplicada em um ambiente, encaminhe a solicitação para o agente 'visualizer_expert'. Retorne sempre a resposta do agente especializado, sem adicionar informações extras. "
         "Sempre forneça uma resposta clara, natural e útil para o usuário, incluindo integralmente a resposta recebida do agente especializado na sua resposta final."
     ),
 ).compile()
@@ -44,3 +47,13 @@ if __name__ == "__main__":
     result = graph.invoke({"messages": chat_messages})
     for m in result['messages']:
         m.pretty_print()
+        
+    try: 
+        img_data = graph.get_graph(xray=True).draw_mermaid_png()
+        display(Image(img_data))
+
+        with open("supervisor_workflow.png", "wb") as f:
+            f.write(img_data)
+        print("Imagem salva como supervisor_workflow.png")
+    except Exception as e:
+        print(f"Error displaying or saving graph: {e}")

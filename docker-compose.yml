@@ -1,0 +1,50 @@
+services:
+  loomi-api:
+    container_name: loomi
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    networks:
+      loomi-network:
+        ipv4_address: 172.28.0.2
+
+  postgres:
+    container_name: loomi-postgres
+    image: pgvector/pgvector:0.7.4-pg16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      loomi-network:
+        ipv4_address: 172.28.0.3
+
+  alembic:
+    container_name: loomi-alembic
+    build: .
+    command: alembic upgrade head
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    networks:
+      loomi-network:
+        ipv4_address: 172.28.0.4
+
+volumes:
+  pgdata:
+  
+networks:
+  loomi-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
