@@ -14,7 +14,7 @@ class PaintService:
         self.embedding_service = PaintEmbeddingService()
 
     def create_paint(self, paint: PaintRegister) -> PaintModel:
-        existing_paint = self.get_paint_by_name_and_color(paint.paint_name, paint.color)
+        existing_paint = self._get_paint_by_name_and_color(paint.paint_name, paint.color)
         if existing_paint:
             raise PaintAlreadyExistsException()
 
@@ -67,6 +67,9 @@ class PaintService:
 
     def get_paints_by_name(self, name: str) -> list[PaintModel]:
         return self.paint_repository.get_paints_by_name(name)
+    
+    def _get_paint_by_name_and_color(self, name: str, color: str) -> PaintModel:
+        return self.paint_repository.get_by_name_and_color(name, color)
     
     def get_paint_by_name_and_color(self, name: str, color: str) -> PaintModel:
         paint = self.paint_repository.get_by_name_and_color(name, color)

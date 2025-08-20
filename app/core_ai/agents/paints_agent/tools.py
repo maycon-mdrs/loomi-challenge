@@ -12,6 +12,9 @@ def retrieve_tintas(question: str):
 
     Esta função utiliza o serviço de recuperação de informações (RAG) para buscar dados sobre tintas,
     auxiliando agentes a responder perguntas técnicas, comerciais ou gerais relacionadas a tintas disponíveis no sistema.
+    
+    Parâmetros:
+    - question (str): A pergunta ou consulta sobre tintas que se deseja responder.
     """
     documents = retriever_service.retrieve_paints(question)
     return {"documents": documents, "question": question}
@@ -26,7 +29,19 @@ def lista_tintas():
     try:
         paint_service = PaintService(db_session)
         paints = paint_service.get_all_paints()
-        return [{"id": paint.id, "paint_name": paint.paint_name} for paint in paints]
+        return [
+            PaintResponse(
+                id=paint.id,
+                paint_name=paint.paint_name,
+                color=paint.color,
+                surface_type=paint.surface_type,
+                environment=paint.environment,
+                finish_type=paint.finish_type,
+                features=paint.features,
+                line=paint.line,
+            )
+            for paint in paints
+        ]
     finally:
         db_session.close()
 
@@ -116,6 +131,7 @@ def lista_tinta_by_id(id: int):
 if __name__ == "__main__":
     print("Recuperando informações sobre tintas com base em uma pergunta:")
     question = "Quais tintas são recomendadas para ambientes internos com alta umidade?"
+    question = "tinta para madeira resistente ao calor"
     result = retrieve_tintas(question)
     print(result)
 
