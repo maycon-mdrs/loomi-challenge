@@ -22,7 +22,10 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    title="PintAI [Loomi Challenge]",
+    lifespan=lifespan
+)
 register_exception_handlers(app)
 
 
