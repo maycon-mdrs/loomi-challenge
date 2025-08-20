@@ -1,4 +1,5 @@
 import os
+from IPython.display import Image, display
 from langgraph_supervisor import create_supervisor
 from app.core_ai.agents.dalle_agent.dalle_agent import create_dalle_agent
 from app.core_ai.agents.paints_agent.paints_agent import create_paints_agent
@@ -46,3 +47,13 @@ if __name__ == "__main__":
     result = graph.invoke({"messages": chat_messages})
     for m in result['messages']:
         m.pretty_print()
+        
+    try: 
+        img_data = graph.get_graph(xray=True).draw_mermaid_png()
+        display(Image(img_data))
+
+        with open("supervisor_workflow.png", "wb") as f:
+            f.write(img_data)
+        print("Imagem salva como supervisor_workflow.png")
+    except Exception as e:
+        print(f"Error displaying or saving graph: {e}")
