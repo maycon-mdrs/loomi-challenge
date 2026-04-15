@@ -9,9 +9,6 @@ from app.routes.user_router import user_router
 from app.database.connection import Session
 from app.services.seed_service import SeedService
 
-app = FastAPI()
-register_exception_handlers(app)
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

@@ -43,7 +43,7 @@ class ChatService:
         except Exception as e:
             logger.error(f"Error saving chat session: {e}")
 
-    def process_chat(self, query_input: ChatRequest) -> ChatMessageResponse:
+    def process_chat(self, query_input: ChatRequest, is_admin: bool = False) -> ChatMessageResponse:
         try:
             # If there is no session_id, create a new UUID
             session_id = query_input.chat_id if query_input.chat_id else str(uuid.uuid4())
@@ -54,7 +54,11 @@ class ChatService:
             # Adds the new user question
             chat_messages = chat_history + [HumanMessage(content=query_input.prompt)]
 
-            result = self.graph.invoke({"messages": chat_messages})
+            # Pass user context (is_admin) to the graph via config
+            result = self.graph.invoke(
+                {"messages": chat_messages},
+                config={"configurable": {"is_admin": is_admin}}
+            )
             response = result["messages"][-1].content
 
             self.save_chat_session(session_id, query_input.prompt, response, user_id)

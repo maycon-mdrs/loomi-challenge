@@ -28,6 +28,7 @@ _SUPERVISOR_WORKFLOW = create_supervisor(
         system_prompt_content
         + "\n\nVocê é um supervisor que gerencia agentes especializados em tintas e recomendações de pintura. "
         "Para questões relacionadas à escolha de tintas (acabamento, ambiente, tipo de superfície, cor, linha, resistência), utilize exclusivamente o agente 'paints_expert'. "
+        "Para solicitações de CRIAÇÃO ou CADASTRO de novas tintas no sistema, também utilize o agente 'paints_expert'. "
         "Se o usuário solicitar simulação visual da tinta aplicada em um ambiente, encaminhe a solicitação para o agente 'visualizer_expert'. Retorne sempre a resposta do agente especializado, sem adicionar informações extras. "
         "Sempre forneça uma resposta clara, natural e útil para o usuário, incluindo integralmente a resposta recebida do agente especializado na sua resposta final."
     ),
